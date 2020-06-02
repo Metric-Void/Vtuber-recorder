@@ -19,9 +19,9 @@ mv python python.bak
 ln -s /usr/bin/python3.6 /usr/bin/python
 
 # vi /usr/bin/yum#替换Python为python2
-sed -i 's/python/python2/g' /usr/bin/yum
+# sed -i 's/python/python2/g' /usr/bin/yum
 # vi /usr/libexec/urlgrabber-ext-down
-sed -i 's/python/python2/g' /usr/libexec/urlgrabber-ext-down
+# sed -i 's/python/python2/g' /usr/libexec/urlgrabber-ext-down
 #两个文件均修改开头的python为python2
  pip3 install youtube-dl
  pip3 install you-get
@@ -31,22 +31,23 @@ sed -i 's/python/python2/g' /usr/libexec/urlgrabber-ext-down
 ffmpeg(){
 cd /
 yum -y install golang wget git unzip screen psmisc
-wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
-tar -xvf ffmpeg-release-amd64-static.tar.xz
-rm -rf ffmpeg-release-amd64-static.tar.xz
-FFILE=$(find . -name ffmpeg)
-FFPFILE=$(find . -name ffprobe)
-mv $FFILE  /usr/bin
-mv $FFPFILE /usr/bin
-
+# wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+# tar -xvf ffmpeg-release-amd64-static.tar.xz
+# rm -rf ffmpeg-release-amd64-static.tar.xz
+# FFILE=$(find . -name ffmpeg)
+# FFPFILE=$(find . -name ffprobe)
+# mv $FFILE  /usr/bin
+# mv $FFPFILE /usr/bin
+echo "FFMpeg Skipped!"
 #清理ffmpeg安装
 }
 #安装go依赖
 goinstall(){
-go get github.com/gorilla/websocket
-go get golang.org/x/crypto/sha3
-go get github.com/mattn/go-sqlite3
-go get github.com/gin-gonic/gin
+# go get github.com/gorilla/websocket
+# go get golang.org/x/crypto/sha3
+# go get github.com/mattn/go-sqlite3
+# go get github.com/gin-gonic/gin
+echo "Go Skipped"
 }
 gitcode(){
 [[ ! -d "$RECFOLDER" ]]&&mkdir "$RECFOLDER"

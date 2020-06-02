@@ -17,10 +17,10 @@ while true; do
     echo "$LOG_PREFIX Try to get current live stream of twitch.tv/$1"
 
     # Get the m3u8 address with streamlink
-	#curl -s https://api.twitch.tv/kraken/streams/$1?client_id=key|grep -q live&& break
-	#wget -q -O-  https://api.twitch.tv/kraken/streams/$1?client_id=key|grep -q live&& break
+	#curl -s https://api.twitch.tv/kraken/streams/$1?client_id=|grep -q live&& break
+	#wget -q -O-  https://api.twitch.tv/kraken/streams/$1?client_id=|grep -q live&& break
 	curl -H 'Accept: application/vnd.twitchtv.v5+json' \
-	-H 'Client-ID:key' \
+	-H 'Client-ID:' \
 	-X GET https://api.twitch.tv/helix/streams?user_login=$1|grep -q live&& break
     echo "$LOG_PREFIX The stream is not available now."
     echo "$LOG_PREFIX Retry after $INTERVAL seconds..."

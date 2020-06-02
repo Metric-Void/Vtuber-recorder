@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
-#cd /home/centos/Vtuber-recorder/config
+#cd /home/centos/config
 #ls|grep .txt|sed 's/.txt//g'
-for ((NUM=$(ls /home/centos/Vtuber-recorder/config|grep -c .txt); NUM>0; --NUM)) 
+
+# Running under root is BAD PRACTICE.
+# I'm doing this only because the script is being ran under a container.
+# Use your own discretion.
+for ((NUM=$(ls /root/recorder/config|grep -c .txt); NUM>0; --NUM)) 
 do
-NAME=$(ls /home/centos/Vtuber-recorder/config|grep .txt|sed 's/.txt//g'|sed -n "$NUM"p)
+NAME=$(ls /root/recorder/config|grep .txt|sed 's/.txt//g'|sed -n "$NUM"p)
 sleep 1
-screen -L -t $NAME -dmS $NAME /home/centos/Vtuber-recorder/index.sh $NAME
+/usr/bin/screen -L -t $NAME -dmS $NAME /root/recorder/index.sh $NAME
 sleep 1
 echo $NAME
 done
